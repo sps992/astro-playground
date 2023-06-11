@@ -1,0 +1,27 @@
+---
+import Header from "../components/Header.astro";
+import Head from "../components/Head.astro";
+import Footer from "../components/Footer.astro";
+const { frontmatter } = Astro.props;
+---
+<Head />
+<Header />
+<div>
+  <div class="w-full h-96">
+    <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="object-cover w-full h-full bg-teal-100">
+  </div>
+  <div class="bg-teal-700 py-6 px-3 mb-8">
+    <div class="container mx-auto">
+      <h1>{frontmatter.title}</h1>
+      <p class="text-sm tracking-widest">{frontmatter.pubDate.slice(0,10)}</p>
+      <p>Written by {frontmatter.author}</p>
+    </div>
+  </div>
+</div>
+<div class="outside-container">
+  <slot />
+</div>
+<Footer />
+<script>
+  import "../scripts/menu.js";
+</script>
