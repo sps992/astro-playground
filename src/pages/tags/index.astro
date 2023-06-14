@@ -1,0 +1,12 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+const allPosts = await Astro.glob('../posts/*.md');
+const tags = [...new Set(allPosts.map((post) => post.frontmatter.tags).flat())];
+const pageTitle = "The Tag Index"
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="flex flex-wrap space-x-2 space-y-2 justify-center">
+{tags.map((tag) => <p class="w-full lg:w-6/12 capitalize border-dotted border-2 hover:bg-orange-600 transition-all duration-500 ease-in-out"> <a href={`/tags/${tag}`} class="block p-4 w-full h-full">{tag}</a></p>)}
+  </div>
+</BaseLayout>
