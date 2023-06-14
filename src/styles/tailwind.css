@@ -8,9 +8,6 @@ html {
 * {
   box-sizing: border-box;
 }
-body {
-  @apply h-screen flex flex-col justify-between ;
-}
 h1 {
   margin: 1rem 0;
   font-size: 2.5rem;
@@ -31,7 +28,7 @@ h1 {
 }
 
 .nav-links {
-  @apply w-full top-20 left-12 bg-orange-400 hidden m-0;
+  @apply w-full top-20 bg-orange-400 hidden;
 }
 
 .nav-links a {
@@ -49,7 +46,7 @@ a:focus {
 
 @media screen and (min-width: 636px) {
   .nav-links {
-    @apply ml-20 block static w-auto bg-none;
+    @apply block static w-auto bg-none;
   }
   .hamburger{
     @apply hidden;

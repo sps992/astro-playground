@@ -12,9 +12,9 @@ const { pageTitle } = Astro.props;
   </head>
   <body>
     <Header />
-    <div class='outside-container w-full'>
+    <div class='outside-container w-full min-h-75vh'>
       <div class='container mx-auto text-center'>
-        <h1>{pageTitle}</h1>
+        <h1 class="capitalize">{pageTitle}</h1>
         <slot />
       </div>
     </div>
