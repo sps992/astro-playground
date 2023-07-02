@@ -7,6 +7,6 @@ const pageTitle = "The Tag Index"
 
 <BaseLayout pageTitle={pageTitle}>
   <div class="flex flex-wrap space-x-2 space-y-2 justify-center">
-{tags.map((tag) => <p class="w-full lg:w-6/12 capitalize border-dotted border-2 hover:bg-orange-600 transition-all duration-500 ease-in-out"> <a href={`/tags/${tag}`} class="block p-4 w-full h-full">{tag}</a></p>)}
+{tags.map((tag) => <p class="w-full lg:w-6/12 capitalize border-dotted border-2 hover:border-primary-500 hover:bg-primary-500 transition-all duration-500 ease-in-out"> <a href={`/tags/${tag}`} class="block p-4 w-full h-full">{tag}</a></p>)}
   </div>
 </BaseLayout>

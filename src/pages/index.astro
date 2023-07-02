@@ -1,8 +1,24 @@
 ---
+import { useStoryblokApi } from '@storyblok/astro'
+import StoryblokComponent from '@storyblok/astro/StoryblokComponent.astro'
 import BaseLayout from "../layouts/BaseLayout.astro";
+import Greeting from "../components/Greeting.jsx";
+const storyblokApi = useStoryblokApi()
+const { data } = await storyblokApi.get('cdn/stories/home', {
+  version: 'draft',
+})
+const story = data.story
 const pageTitle = "Home Page";
 ---
 
 <BaseLayout pageTitle={pageTitle}>
-	<h2>My awesome blog subtitle</h2>
+	<h2 class="text-3xl mb-6">My WIP Astro Blog</h2>
+	<Greeting client:load messages={["Hej", "Hallo", "Hola", "Habari"]} />
+	<p class="text-xl">Watch this space, whilst I learn add more content!</p>
+	<StoryblokComponent blok={story.content} />
+	<div class="container flex flex-wrap">
+		<div class="bg-primary-500 w-48 h-48"></div>
+		<div class="bg-secondary-500 w-48 h-48"></div>
+		<div class="bg-tertiary-500 w-48 h-48"></div>
+	</div>
 </BaseLayout>
