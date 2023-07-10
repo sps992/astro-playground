@@ -29,17 +29,17 @@ img {
 }
 
 .hamburger .line {
-  @apply block w-10 h-1 mb-3 bg-primary-500;
+  @apply block w-10 h-1 bg-primary-500;
 }
 
 .nav-links {
-  @apply w-full top-20 hidden;
+  @apply w-full top-20;
 }
 .dark .nav-links a{
   @apply text-white;
 }
 .nav-links a {
-  @apply block text-center py-3 pr-0 text-lg font-bold uppercase;
+  @apply block py-3 pr-0 font-bold uppercase;
 }
 
 .expanded {
@@ -51,16 +51,60 @@ nav a.active{
 .dark .nav-links a.active {
   @apply text-primary-500;
 }
-@media screen and (min-width: 636px) {
-  .nav-links {
-    @apply block static w-auto bg-none;
-  }
-  .hamburger{
-    @apply hidden;
-  }
 
-  .nav-links a {
-    @apply p-5;
-  }
+.drawer {
+  @apply hidden;
+}
 
+.drawer__header {
+  @apply flex border-b-2 border-yellow-500 justify-between items-center p-6;
+}
+
+.drawer__close {
+  @apply m-0 p-0 border-0 bg-transparent cursor-pointer w-4 h-4;
+}
+
+.drawer__wrapper {
+  transition: transform 0.3s;
+  will-change: transform;
+  -webkit-transform: translateX(103%);
+  transform: translateX(103%);
+  /* extra 3% because of box-shadow */
+  -webkit-overflow-scrolling: touch;
+  /* enables momentum scrolling in iOS overflow elements */
+  box-shadow: 0 2px 6px #777;
+  @apply fixed top-0 right-0 bottom-0 h-full w-full z-[9999] overflow-auto bg-primary-500 flex flex-col max-w-[500px];
+}
+
+.drawer__content {
+  @apply relative overflow-x-hidden overflow-y-auto h-full flex-grow p-6;
+}
+
+.drawer.is-active {
+  @apply block;
+}
+
+.drawer.is-visible .drawer__wrapper {
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+}
+
+.drawer.is-visible .drawer__overlay {
+  @apply opacity-50;
+}
+
+.drawer__overlay {
+  @apply fixed top-0 right-0 bottom-0 left-0 w-full z-[9999] opacity-0 bg-tertiary-500;
+  transition: opacity 0.3s;
+  will-change: opacity;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.drawer--left .drawer__wrapper {
+  @apply left-0;
+  -webkit-transform: translate3d(-100%, 0, 0);
+  transform: translate3d(-100%, 0, 0);
 }

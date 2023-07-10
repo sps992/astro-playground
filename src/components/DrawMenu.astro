@@ -1,0 +1,66 @@
+---
+import { useStoryblokApi } from "@storyblok/astro";
+const storyblokApi = useStoryblokApi();
+const { data } = await storyblokApi.get("cdn/stories/config", {
+  version: "draft",
+  resolve_links: "url",
+});
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname; 
+const headerMenu = data?.story?.content?.header_menu;
+const baseMenuStyles = 'text-left transition-all duration-500 ease-in-out hover:text-secondary-500 text-3xl';
+const activeLink = 'text-secondary-500 '
+---
+
+<section class='drawer drawer--right' id='drawer-name' data-drawer-target>
+  <div class='drawer__overlay' data-drawer-close tabindex='-1'></div>
+  <div class='drawer__wrapper'>
+    <div class='drawer__header'>
+      <div class='drawer__title flex'>
+      </div>
+      <button
+        class='drawer__close text-white hover:scale-75 transition-all ease-in-out duration-300 hover:text-primary-50'
+        data-drawer-close
+        aria-label='Close Drawer'
+      >
+      </button>
+    </div>
+    <hr class='h-0.5 bg-primary-500 border-none' />
+    <div class='drawer__content'>
+      <ul class="">
+        {headerMenu.map((menu) => (
+          <li class="nav-links lg:hidden">
+            <a href={`/${menu.link.cached_url}`} class={currentPath === `/${menu.link.cached_url}` ? activeLink + baseMenuStyles : baseMenuStyles}>
+              {menu.link.story.name}
+            </a>
+          </li>
+        ))
+        }
+      </ul>
+      <div class='w-full text-white text-sm wysiwyg-defaults'>
+
+      </div>
+    </div>
+    <div class='p-6'>
+      <p class='font-heading w-full mb-4'>Contact us via:</p>
+      <div class='flex flex-wrap'>
+
+        <div class='flex justify-evenly'>
+
+          <div class='w-8 h-8 mr-4'>
+            <a
+              href="/"
+              title=''
+              class='transition-all duration-500 ease-in-out hover:text-tertiary-700'
+              target='/'
+            >
+
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>

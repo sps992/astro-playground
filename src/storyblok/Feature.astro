@@ -2,14 +2,21 @@
 import { storyblokEditable } from "@storyblok/astro";
 
 const { blok } = Astro.props;
----
 
-<div {...storyblokEditable(blok)} class='w-full p-12 bg-offwhite rounded-[5px] text-center'>
-    <img src={blok.FeaturedImage.filename && blok.FeaturedImage.filename} alt="" class=" w-full h-48 object-cover bg-center">
+let featureImg;
+if (blok.FeaturedImage.filename) {
+  featureImg = blok.FeaturedImage.filename;
+} else {
+  featureImg = '/assets/images/ancient-aliens.jpg';
+}
+---
+<div {...storyblokEditable(blok)} class='w-full bg-offwhite rounded-[5px] text-center h-full'>
   <div class="w-full h-48">
-    
+      <img src={featureImg} alt="" class="w-full h-full object-cover bg-center">
   </div>
-  <h3 class='text-2xl text-slate-800 font-bold'>{blok.name}</h3>
-  <p class="text-slate-800 dark:text-tertiary-500">{blok.TextArea}</p>
+  <div class="p-12">
+    <h3 class='text-2xl text-slate-800 font-bold mb-4'>{blok.name}</h3>
+    <p class="text-slate-800 dark:text-tertiary-500">{blok.TextArea}</p>
+  </div>
 </div>
 
