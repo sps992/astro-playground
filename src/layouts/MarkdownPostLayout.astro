@@ -1,11 +1,11 @@
 ---
-import Header from "../components/Header.astro";
+import StoryblokHeader from "../components/StoryblokHeader.astro";
 import Head from "../components/Head.astro";
 import Footer from "../components/Footer.astro";
 const { frontmatter } = Astro.props;
 ---
 <Head />
-<Header />
+<StoryblokHeader />
 <div>
   <div class="w-full">
     <img src={frontmatter.image.url} alt={frontmatter.image.alt} class="object-cover w-full min-h-25vh h-full max-h-168 bg-teal-100 bg-center">
