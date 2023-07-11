@@ -1,7 +1,7 @@
 ---
 ---
 
-<button id='themeToggle' class="flex mx-auto p-5">
+<button id='themeToggle' class="flex mx-auto p-5 themeToggle">
   <svg class="w-8 h-8 sun" xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'>
     <path
       width="2rem"
@@ -65,4 +65,6 @@
   }
 
   document.getElementById("themeToggle").addEventListener("click", handleToggleClick);
+  const navDrawContainer = document.getElementById("drawer-name");
+  const navDrawThemeToggle = navDrawContainer.getElementsByClassName("themeToggle")[0].addEventListener("click", handleToggleClick);
 </script>
